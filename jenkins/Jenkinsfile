@@ -18,6 +18,12 @@ pipeline {
         }
         stage('Deliver') {
             steps {
+                //previous code
+                //sh './jenkins/scripts/deliver.sh'
+
+                //current code
+                //with this line (26), first gve permsision to deliver.sh, before executing the file
+                sh 'chmod +x./jenkins/scripts/deliver.sh'
                 sh './jenkins/scripts/deliver.sh'
             }
         }
