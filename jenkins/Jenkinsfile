@@ -1,12 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Build-staging') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-        stage('Test') {
+        stage('Test-staging') {
             steps {
                 sh 'mvn test'
             }
@@ -16,15 +16,11 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
+        stage('Deliver-staging') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
-        stage('Complete') {
-            steps {
-                echo 'Job Complete'
-            }
-        }
+    
     }
 }
